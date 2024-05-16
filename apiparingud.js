@@ -112,7 +112,7 @@ document.addEventListener("DOMContentLoaded", function () {
         var searchString = document.getElementById("otsingu_sone").value;
 
         // Construct the URL with the book ID
-        var url = "http://localhost:5001/raamatu_otsing/" + encodeURIComponent(bookId);
+        var url = "https://wsdsbackendotsing.azurewebsites.net/raamatu_otsing/" + encodeURIComponent(bookId);
 
         //console.log(url);
 
@@ -164,14 +164,14 @@ function handleResponse(form, responseData) {
 
 async function listiraamatud() {
 	
-	const responseData = await getDataAsJson("http://localhost:5000/raamatud/");
+	const responseData = await getDataAsJson("https://wsdsbackend.azurewebsites.net/raamatud/");
 
     const resultElement = document.getElementById("raamatud_result");
     resultElement.innerHTML = ""
     for (var raamat of responseData.raamatud){
         var raamat_ilma_laiendita = raamat.split(".")[0];
-        resultElement.innerHTML += '<a href="http://localhost:5000/raamatud/'+raamat_ilma_laiendita+'"  download="'+raamat_ilma_laiendita+'.txt" >' +raamat_ilma_laiendita+".txt</a> " +
-            '<a href="#" onclick="deleteObject(\'http://localhost:5000/raamatud/'+raamat_ilma_laiendita+'\')" > [kustuta]</a>' +
+        resultElement.innerHTML += '<a href="https://wsdsbackend.azurewebsites.net/raamatud/'+raamat_ilma_laiendita+'"  download="'+raamat_ilma_laiendita+'.txt" >' +raamat_ilma_laiendita+".txt</a> " +
+            '<a href="#" onclick="deleteObject(\'https://wsdsbackend.azurewebsites.net/raamatud/'+raamat_ilma_laiendita+'\')" > [kustuta]</a>' +
             "<br />";
     }
 
